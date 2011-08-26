@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="edu.mit.media.hd.funf.bgcollector"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk  android:minSdkVersion="7" android:targetSdkVersion="8" />
+    <application android:label="@string/app_name" android:icon="@drawable/icon" >
+    	<service android:name="edu.mit.media.hd.funf.probe.ProbeController"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.ActivityProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.AndroidInfoProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.ApplicationsProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.AudioFilesProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.BatteryProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.BluetoothProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.BrowserBookmarksProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.BrowserSearchesProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.CallLogProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.CellProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.ContactProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.HardwareInfoProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.ImagesProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.NtpProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.LocationProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.RunningApplicationsProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.ScreenProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.SMSProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.TelephonyProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.TimeOffsetProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.VideosProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.WifiProbe"></service>
+        
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.AccelerometerSensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.GravitySensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.GyroscopeSensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.LightSensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.LinearAccelerationSensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.MagneticFieldSensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.OrientationSensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.PressureSensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.ProximitySensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.RotationVectorSensorProbe"></service>
+        <service android:name="edu.mit.media.hd.funf.probe.builtin.TemperatureSensorProbe"></service>
+        
+        <service android:name="edu.mit.media.hd.funf.configured.ConfiguredDatabaseService"></service>
+        <service android:name="edu.mit.media.hd.funf.configured.ConfiguredArchiverService"></service>
+        <service android:name="edu.mit.media.hd.funf.configured.ConfiguredRemoteArchiverService"></service>
+        
+        <service android:name=".JsonDataListenerService"></service>
+        <service android:name="edu.mit.media.hd.funf.bgcollector.CustomConfigurationUpdaterService"></service>
+        
+        <receiver android:name="edu.mit.media.hd.funf.bgcollector.LauncherReceiver" android:enabled="true">
+        	<intent-filter>
+        		<action android:name="android.intent.action.BATTERY_CHANGED" />
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />
+        		<action android:name="android.intent.action.DOCK_EVENT" />
+        		<action android:name="android.intent.action.ACTION_SCREEN_ON" />
+        		<action android:name="android.intent.action.USER_PRESENT" />
+        	</intent-filter>
+        </receiver>
+    </application>
+    
+    <!-- Battery Probe and launching -->
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+    
+
+    <!-- All probes -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    
+    <!-- Location probe, Cell probe -->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> 
+    
+    <!-- Location probe -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>   
+    
+    
+    <!-- Wifi and Hardware Info probes -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> 
+    
+     <!-- Wifi probe -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/> 
+    
+    <!-- Bluetooth probe -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/> 
+    
+    <!-- Bluetooth and Hardware Info probes -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/> 
+    
+    <!-- Running applications probe -->
+    <uses-permission android:name="android.permission.GET_TASKS"/> 
+    
+    <!-- Browser probes -->
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
+    
+    <!-- Call Log and Contact probes -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    
+    <!-- Backing up database to SD card -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
+    
+    <!-- Backing up to the web -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+    <!--  SMS Probe -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    
+    <!-- Running applications probe -->
+    <uses-permission android:name="android.permission.GET_TASKS"/> 
+    
+    <!-- Backing up database to SD card -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
+    
+    <!-- Backing up to the web -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+    <!-- DatabaseService, Archive service (unique ids) -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+</manifest> 
