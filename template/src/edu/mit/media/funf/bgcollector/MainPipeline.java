@@ -34,11 +34,14 @@ import edu.mit.media.funf.IOUtils;
 import edu.mit.media.funf.Utils;
 import edu.mit.media.funf.configured.ConfiguredPipeline;
 import edu.mit.media.funf.configured.FunfConfig;
+import edu.mit.media.funf.probe.Probe;
 import edu.mit.media.funf.storage.BundleSerializer;
 public class MainPipeline extends ConfiguredPipeline {
 	
 	public static final String TAG = "FunfBGCollector";
 	public static final String MAIN_CONFIG = "main_config";
+	public static final String START_DATE_KEY = "START_DATE";
+	
 	
 	@Override
 	public BundleSerializer getBundleSerializer() {
@@ -51,6 +54,25 @@ public class MainPipeline extends ConfiguredPipeline {
 		}
 		
 	}
+	
+	@Override
+	public void onDataReceived(Bundle data) {
+		super.onDataReceived(data);
+		// Fill this in with extra behaviors on data received
+	}
+	
+	@Override
+	public void onStatusReceived(Probe.Status status) {
+		super.onStatusReceived(status);
+		// Fill this in with extra behaviors on status received
+	}
+	
+	@Override
+	public void onDetailsReceived(Probe.Details details) {
+		super.onDetailsReceived(details);
+		// Fill this in with extra behaviors on details received
+	}
+	
 	
 	@Override
 	public FunfConfig getConfig() {
@@ -98,5 +120,4 @@ public class MainPipeline extends ConfiguredPipeline {
 			}
 		}
 	}
-
 }

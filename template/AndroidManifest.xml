@@ -29,7 +29,6 @@
     <application android:label="@string/app_name" android:icon="@drawable/icon" >
     	
         <!-- Probe Services -->
-        <service android:name="edu.mit.media.funf.probe.ProbeController"></service>
         <service android:name="edu.mit.media.funf.probe.builtin.ActivityProbe"></service>
         <service android:name="edu.mit.media.funf.probe.builtin.AndroidInfoProbe"></service>
         <service android:name="edu.mit.media.funf.probe.builtin.ApplicationsProbe"></service>
@@ -63,6 +62,9 @@
         <service android:name="edu.mit.media.funf.probe.builtin.ProximitySensorProbe"></service>
         <service android:name="edu.mit.media.funf.probe.builtin.RotationVectorSensorProbe"></service>
         <service android:name="edu.mit.media.funf.probe.builtin.TemperatureSensorProbe"></service>
+        
+        <service android:name="edu.mit.media.funf.probe.builtin.AudioFeaturesProbe"></service>
+        <service android:name="edu.mit.media.funf.probe.builtin.AccelerometerFeaturesProbe"></service>
         
         <!-- Framework services -->
         <service android:name=".MainPipeline"></service>
@@ -127,6 +129,9 @@
     
     <!-- Running applications probe -->
     <uses-permission android:name="android.permission.GET_TASKS"/> 
+    
+    <!-- Running Audio features probe -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     
     <!-- Backing up database to SD card -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
