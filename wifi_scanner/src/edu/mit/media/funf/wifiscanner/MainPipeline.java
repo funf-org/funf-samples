@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public 
  * License along with Funf. If not, see <http://www.gnu.org/licenses/>.
  */
-package edu.mit.media.funf.bgcollector;
+package edu.mit.media.funf.wifiscanner;
 
 import static edu.mit.media.funf.AsyncSharedPrefs.async;
 
@@ -71,11 +71,26 @@ public class MainPipeline extends ConfiguredPipeline {
 		}
 		
 	}
-	
+
 	@Override
 	public void onDataReceived(Bundle data) {
 		super.onDataReceived(data);
-		// Fill this in with extra behaviors on data received
+		incrementCount();
+	}
+
+	public static final String SCAN_COUNT_KEY = "SCAN_COUNT";
+	
+	public static long getScanCount(Context context) {
+		return getSystemPrefs(context).getLong(SCAN_COUNT_KEY, 0L);
+	}
+	
+	private void incrementCount() {
+		boolean success = false;
+		while(!success) { 
+			SharedPreferences.Editor editor = getSystemPrefs().edit();
+			editor.putLong(SCAN_COUNT_KEY, getScanCount(this) + 1L);
+			success = editor.commit();
+		}
 	}
 	
 	@Override

@@ -21,7 +21,7 @@
  * License along with Funf. If not, see <http://www.gnu.org/licenses/>.
  -->
 
-<project name="FunfCollector" default="help">
+<project name="WifiScanner" default="help">
 
 <!-- The local.properties file is created and updated by the 'android'
      tool.
