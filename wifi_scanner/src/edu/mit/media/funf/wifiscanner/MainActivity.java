@@ -71,7 +71,12 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		Log.i("WifiScanner", "SharedPref change: " + key);
 		if (MainPipeline.SCAN_COUNT_KEY.equals(key)) {
-			updateScanCount();
+			runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					updateScanCount();
+				}
+			});
 		}
 	}
 	
