@@ -23,4 +23,14 @@
 
 <resources>
     <string name="app_name">Wifi Scanner</string>
+    <string name="pipeline">
+        {"@type":"edu.mit.media.funf.pipeline.BasicPipeline",
+         "name":"default",
+         "version":1,
+         "data":[
+         	"edu.mit.media.funf.probe.builtin.WifiProbe",
+			"edu.mit.media.funf.probe.builtin.SimpleLocationProbe"
+         ]
+         }
+    </string>
 </resources>
