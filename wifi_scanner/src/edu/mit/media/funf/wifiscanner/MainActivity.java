@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements DataListener {
       wifiProbe.registerPassiveListener(MainActivity.this);
       locationProbe.registerPassiveListener(MainActivity.this);
       
-      // This checkbox
+      // This checkbox enables or disables the pipeline
       enabledCheckbox.setChecked(pipeline.isEnabled());
       enabledCheckbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
         @Override
@@ -119,6 +119,8 @@ public class MainActivity extends Activity implements DataListener {
         }
       }
     });
+    
+    
 
     // Forces the pipeline to scan now
     scanNowButton = (Button) findViewById(R.id.scanNowButton);
@@ -138,6 +140,13 @@ public class MainActivity extends Activity implements DataListener {
     
     // Bind to the service, to create the connection with FunfManager
     bindService(new Intent(this, FunfManager.class), funfManagerConn, BIND_AUTO_CREATE);
+  }
+
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    unbindService(funfManagerConn);
   }
 
 
