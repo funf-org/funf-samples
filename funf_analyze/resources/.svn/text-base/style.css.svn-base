@@ -1,0 +1,374 @@
+/* BEGIN RESET CSS */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}                  
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section { 
+    display:block;
+}
+
+nav ul { list-style:none; }
+
+blockquote, q { quotes:none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+
+a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+
+/* tables still need cellspacing="0" in the markup */
+table { border-collapse:collapse; border-spacing:0; }
+
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+
+input, select { vertical-align:middle; }
+
+/* END RESET CSS */
+
+/* Body */
+html, body {height: 100%}
+
+body{
+    background-color: #ffffff;
+    
+    font-family: 'Arimo', Helvetica, arial, serif;
+}
+
+#topBar{
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background-color: black;
+}
+
+/* Center Container */
+#container{
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    min-height: 100%;
+}
+
+/* Header */
+#header{
+    height: 75px;
+}
+
+#titleTop{
+    font-size: 24px;
+    float: left;
+    letter-spacing: -1.5px;
+}
+
+#yourName{
+    font-size: 12px;
+    letter-spacing: -.5px;
+}
+
+.funfTitle{
+    font-size: 12px;
+    color: #7EA603;
+    letter-spacing: -.5px;
+}
+
+#dateTop{
+    float: right;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: right;
+    line-height: 125%
+}
+
+.blue{
+    color: #40a7aa;
+    padding-left: 5px;
+}
+
+/* Main Content */
+#main{
+    overflow:auto;
+	padding-bottom: 12px;  /* must be same height as the footer */
+}
+
+.grid-hr {
+	background: url("images/bg-author.png") repeat-x;
+	height: 17px;
+}
+
+#weightBMIBlock{
+    height: 240px;
+}
+
+.leftGraphBox{
+    float: left;
+    margin-right: 10px;
+}
+
+.graph{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#rightProgressBoxOne{
+    float: right;
+    margin-left: 10px;
+    height: 213px;
+    width: 280px;
+    background-color: #272727;
+    text-transform:uppercase;
+}
+
+#rightProgressBoxTwo{
+    float: right;
+    margin-left: 10px;
+    height: 215px;
+    width: 280px;
+    background-color: #cfb96a;
+    text-transform:uppercase;
+}
+
+.sectionTitle{
+    font-size: 14px;
+    font-weight: bold;
+    color: #39383d;
+}
+
+.bmi{
+    width: 500px;
+    height: 60px;
+}
+
+.bmiLabel{
+    position: absolute;
+    margin-top: -23px;
+    display: block;
+    height: 25px;
+    width: 72px;
+}
+
+.bmiLabelTriangle{
+    float: left;
+    font-size: 0px; line-height: 0%; width: 0px;
+    border-right: 25px solid #f8f8f8;
+}
+
+.bmiLabelRectangle{
+    float: left;
+    height: 17px;
+    width: 65px;
+    margin-left: -18px;
+}
+
+.bmiLabelText{
+    font-size: 12px;
+    font-weight: bold;
+    color: #f8f8f8;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 4px;
+}
+
+.rangeLabel{
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.lowRange{
+    width: 160px;
+    height: 33px;
+    float: left;
+    margin-top: 3px;
+    margin-right: 7px;
+    background-color: #cb764f;
+}
+
+.lowRangeTitle{
+    float: left;
+    font-size: 11px;
+    font-weight: bold;
+    width: 160px;
+    margin-right: 7px;
+    margin-top: 2px;
+}
+
+.normalRange{
+    width: 160px;
+    height: 33px;
+    float: left;
+    margin-top: 3px;
+    margin-right: 7px;
+    background-color: #6c9670;
+}
+
+.normalRangeTitle{
+    float: left;
+    font-size: 11px;
+    font-weight: bold;
+    width: 160px;
+    margin-right: 7px;
+    margin-top: 2px;
+}
+
+.highRange{
+    width: 160px;
+    height: 33px;
+    float: left;
+    margin-top: 3px;
+    background-color: #cb764f;
+}
+
+.highRangeTitle{
+    float: left;
+    font-size: 11px;
+    font-weight: bold;
+    width: 160px;
+    margin-top: 2px;
+}
+
+.boxTitle{
+    color: #f8f8f8;
+    margin: 10px;
+}
+
+.boxContent{
+    margin-top: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #999;
+    float: left;
+    text-align: right;
+    line-height: 125%;
+}
+
+.boxContentRight{
+    width: 100px;
+    margin-left: 15px;
+}
+
+.boxContentLeft{
+    margin-left: 15px;
+    width: 120px;
+}
+
+#rightProgressBoxTwo .boxContentLeft{
+    width: 145px;
+}
+
+#rightProgressBoxTwo .boxContentRight{
+    margin-left: 0px;
+    width: 40px;
+}
+
+.boxResult{
+    color: white;
+}
+
+.downArrow{
+    margin-left: 15px;
+    margin-bottom: -3px;
+    height: 40px;
+    width: 40px;
+    background-image: url("down.png");
+}
+
+.upArrow{
+    margin-left: 15px;
+    margin-bottom: -3px;
+    height: 40px;
+    width: 40px;
+    background-image: url("up.png");
+}
+
+
+#compositionBlock{
+    height: 370px;
+}
+
+#recommendationsBlock{
+    height: 150px;
+}
+
+
+/* Footer */
+#footer{
+    font-size: 10px;
+    color: #f8f8f8;
+    
+    position: relative;
+	margin-top: -12px; /* negative value of footer height */
+	height: 12px;
+	clear:both;
+}
+
+#bottomBar{
+    height: 12px;
+    width: 100%;
+    background-color: black;
+    padding-top: 2px;
+}
+
+#holdTheLine{
+    width: 800px;
+    margin: 0 auto;
+}
+
+#leftFooterText{
+    float: left;
+}
+
+#rightFooterText{
+    float: right;
+}
+
+/*Misc*/
+#chart {
+	background-color: #272727;
+	color: white;
+	left: 50%;
+	margin: 5px 0 0 -400px;
+	position: absolute;
+	width: 300px;
+	width: 800px;
+}
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}

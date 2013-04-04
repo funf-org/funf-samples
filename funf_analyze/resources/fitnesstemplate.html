@@ -1,0 +1,217 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title></title>
+    
+    <!-- Mobile viewport optimized -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="resources/style.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Arimo:regular,bold' type='text/css' >
+    
+    <script src="resources/js/raphael.js" type="text/javascript" charset="utf-8"></script>
+    <script src="resources/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="resources/js/dots.js" type="text/javascript" charset="utf-8"></script>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+		google.load("visualization", "1", {packages:["corechart", "annotatedtimeline"]});
+		google.setOnLoadCallback(drawChart);
+		function drawChart() {
+			var datasetFullOne = [];
+			var dataset = [];
+			var data = new google.visualization.DataTable();
+
+			battery_data = [{{ BatteryData }}];
+			datasetFullOne = battery_data;
+	
+			for (var i = 0; i < datasetFullOne.length; i++){
+				dataset.push([new Date(datasetFullOne[i][0] * 1000), datasetFullOne[i][1]]);
+			}
+			
+			data.addColumn('datetime', 'Date'); 
+			data.addColumn('number', 'Battery');
+			data.addRows(dataset);
+			
+			var chart_scr = new google.visualization.AnnotatedTimeLine(document.getElementById('battery_chart_div'));
+			chart_scr.draw(data, {displayAnnotations: true, colors: ['#4cbf00']});
+		}
+		
+		google.setOnLoadCallback(drawScreenChart);
+		function drawScreenChart() {
+			var datasetFullOne = [];
+			var dataset = [];
+			var data = new google.visualization.DataTable();
+
+			screen_data = [{{ ScreenData }}];
+			datasetFullOne = screen_data;
+	
+			for (var i = 0; i < datasetFullOne.length; i++){
+				dataset.push([new Date(datasetFullOne[i][0] * 1000), datasetFullOne[i][1]]);
+			}
+			
+			data.addColumn('datetime', 'Date'); 
+			data.addColumn('number', 'Screen');
+			data.addRows(dataset);
+			
+			var chart_scr = new google.visualization.AnnotatedTimeLine(document.getElementById('screen_chart_div'));
+			chart_scr.draw(data, {displayAnnotations: true, colors: ['#4cbf00']});
+		}
+		
+		google.setOnLoadCallback(drawTemperatureChart);
+		function drawTemperatureChart() {
+			var datasetFullOne = [];
+			var dataset = [];
+			var data = new google.visualization.DataTable();
+
+			temp_data = [{{ TemperatureData }}];
+			datasetFullOne = temp_data;
+	
+			for (var i = 0; i < datasetFullOne.length; i++){
+				dataset.push([new Date(datasetFullOne[i][0] * 1000), datasetFullOne[i][1]]);
+			}
+			
+			data.addColumn('datetime', 'Date'); 
+			data.addColumn('number', 'Temperature');
+			data.addRows(dataset);
+			
+			var chart_scr = new google.visualization.AnnotatedTimeLine(document.getElementById('temperature_chart_div'));
+			chart_scr.draw(data, {displayAnnotations: true, colors: ['#4cbf00']});
+		}
+    </script>
+    
+    <!--[if !IE 7]>
+        <style type="text/css">
+            #wrap {display:table;height:100%}
+        </style>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div id="topBar"></div>
+
+    <div id="container">
+        <div id ="header">
+            <span id="titleTop">
+                Example Data Visualizations <span id="yourName">-all data stored locally-</span>
+                <p class="funfTitle">Funf Open Sensing Framework</p>
+            </span>
+            
+            <span id="dateTop">
+                <p>GENERATED: <span class="blue">{{ GeneratedDate }}</span></p>
+            </span>
+        </div>
+
+        <div id="main">
+            <div id="weightBMIBlock">
+                <span class="leftGraphBox">
+                    <p class="sectionTitle">Your most visited locations</p>
+                    <span class="funfTitle"><a mimetype="application/vnd.google-earth.kmz" href="most_visited.kmz">Location Heatmap</a> and <a mimetype="application/vnd.google-earth.kmz" href="movement_path.kml">Movement Path</a>. We recommend installing <a href="http://www.google.com/earth/index.html">Google Earth</a> to view.</span>
+
+					<div class="graph"><img src="http://maps.googleapis.com/maps/api/staticmap?center={{ LastLocCords }}&zoom=13&size=500x174&maptype=satellite&sensor=false" /><!-- <img src="images/campus.png" width="500" height="174" alt="" /> --></div>
+<!-- 					<br /><br />
+					<p class="sectionTitle">Your physical activity</p>
+					<span class="funfTitle">{{ SleepRanges }}</span> -->
+					
+                </span>
+                
+                <span id="rightProgressBoxOne">
+                    <h3 class="boxTitle">DATA OVERVIEW</h3>
+                    <span class="boxContent boxContentLeft">
+                        FROM DATE:<br />
+                        TO DATE:<br />
+                        <br />
+                        LOCATION SCANS:<br />
+                        ACTIVITY SCANS:<br />
+                        BATTERY SCANS:<br />
+                        SCREEN SCANS:<br />
+                        TEMP SCANS:<br />
+                        TOTAL SCANS:
+                    </span>
+                    
+                    <span class="boxContent boxContentRight">
+                        {{ StartDate }}<br />
+                        {{ EndDate }}<br />
+                        <br />
+                        {{ LocationScans }}<br />
+                        {{ ActivityScans }}<br />
+                        {{ BatteryScans }}<br />
+                        {{ ScreenScans }}<br />
+                        {{ BatteryScans }}<br />
+                        <span class="boxResult">{{ TotalScans }}</span><br />
+                    </span>
+                    
+                    <span class="boxContent {{ WeightUpOrDownArrow }}"></span><br />
+                    <span class="boxContent {{ BMIUpOrDownArrow }}"></span>
+                </span>
+            </div>
+            
+            <div class="grid-hr alpha " style="margin-bottom:20px;"></div>
+            
+            <div id="compositionBlock">
+                <span class="leftGraphBox">
+                    <p class="sectionTitle">Your relative activity over time</p>
+                    <span class="funfTitle">Based on a scale of 0 to 60.</span>
+                    {{ ActivityGraph }}
+                </span>
+                
+            </div>
+            
+            <div class="grid-hr alpha " style="margin-bottom:20px;"></div>
+            
+            <div id="compositionBlock">
+                <span class="leftGraphBox">
+                    <p class="sectionTitle">Your battery life over time</p>
+                    <span class="funfTitle">States: percentage</span>
+                    <!-- <div class="graph"><img src="battery.png" alt="" /></div> -->
+                    <div id='battery_chart_div' style='width: 800px; height: 240px;'></div>
+                </span>
+            </div>
+            
+            <div class="grid-hr alpha " style="margin-bottom:20px;"></div>
+            
+            <div id="compositionBlock">
+                <span class="leftGraphBox">
+                    <p class="sectionTitle">Your screen activity over time</p>
+                    <span class="funfTitle">States: on and off</span>
+                    <!-- <div class="graph"><img src="battery.png" alt="" /></div> -->
+                    <div id='screen_chart_div' style='width: 800px; height: 240px;'></div>
+                </span>
+            </div>
+            
+            <div class="grid-hr alpha " style="margin-bottom:20px;"></div>
+            
+            <div id="compositionBlock">
+                <span class="leftGraphBox">
+                    <p class="sectionTitle">Your phone temperature over time</p>
+                    <span class="funfTitle"></span>
+                    <!-- <div class="graph"><img src="battery.png" alt="" /></div> -->
+                    <div id='temperature_chart_div' style='width: 800px; height: 240px;'></div>
+                </span>
+                
+            </div>
+            
+<!--            <div id="recommendationsBlock">
+                <span class="leftGraphBox">
+                    <p class="sectionTitle">Recommendations</p>
+                    <p>stuff goes here.</p>
+                </span>
+            </div>
+-->
+        </div>
+
+    </div>
+    
+    <div id="footer">
+        <div id="bottomBar">
+            <div id="holdTheLine">
+                <span id="leftFooterText">Funf Open Sensing Framework</span>
+                <span id="rightFooterText">funf (at) media.mit.edu </span>
+            </div>
+        </div>
+    </div>
+        
+</body>
+</html>
